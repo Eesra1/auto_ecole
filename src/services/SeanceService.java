@@ -66,7 +66,7 @@ public class SeanceService {
         JSONObject obj = SeanceRepositorie.chercherParNumero(numero);
 
         if (obj == null) {
-            System.out.println("❌ Aucune séance trouvée avec ce numéro.");
+            System.out.println("❌ Aucune séance trouvée avec ce numéro  .");
             return;
         }
 
