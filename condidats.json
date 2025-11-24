@@ -1,0 +1,32 @@
+[
+    {
+        "numero": 24058346,
+        "mail": "eesrasalhi@gmail.com",
+        "nbSC": 0,
+        "montantApaye": 0,
+        "cin": 12121212,
+        "nom": "isra",
+        "age": 22,
+        "montantPaye": 0
+    },
+    {
+        "numero": 25025025,
+        "mail": "melek@gmail.com",
+        "nbSC": 0,
+        "montantApaye": 0,
+        "cin": 14141414,
+        "nom": "melek",
+        "age": 23,
+        "montantPaye": 0
+    },
+    {
+        "numero": 25252525,
+        "mail": "hadir@gmail.com",
+        "nbSC": 0,
+        "montantApaye": 0,
+        "cin": 25252525,
+        "nom": "halir",
+        "age": 25,
+        "montantPaye": 0
+    }
+]
