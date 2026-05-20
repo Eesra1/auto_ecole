@@ -11,6 +11,9 @@ public abstract class Seance {
     private float prix;
     private Condidat condidat; // Ajout du candidat
 
+    /**
+     * Constructeur historique (reste disponible si utilisé ailleurs).
+     */
     public Seance(int numero, LocalDate date, LocalTime heure, Moniteur moniteur, float prix, Condidat condidat) {
         this.numero = numero;
         this.date = date;
@@ -18,6 +21,13 @@ public abstract class Seance {
         this.moniteur = moniteur;
         this.prix = prix;
         this.condidat = condidat;
+    }
+
+    /**
+     * Nouveau constructeur sans prix : les sous-classes fixeront le prix.
+     */
+    public Seance(int numero, LocalDate date, LocalTime heure, Moniteur moniteur, Condidat condidat) {
+        this(numero, date, heure, moniteur, 0f, condidat);
     }
 
     public int getNumero() {
@@ -56,7 +66,10 @@ public abstract class Seance {
         return prix;
     }
 
-    public void setPrix(float prix) {
+    /**
+     * Protégé pour que seules les sous-classes puissent fixer le prix.
+     */
+    protected void setPrix(float prix) {
         this.prix = prix;
     }
 
@@ -70,11 +83,13 @@ public abstract class Seance {
 
     @Override
     public String toString() {
-        return "Séance n°" + numero +
-                " | Date : " + date +
-                " | Heure : " + heure +
-                " | Moniteur : " + (moniteur != null ? moniteur.getNom() : "Non assigné") +
-                " | Candidat : " + (condidat != null ? condidat.getNom() : "Non assigné") +
-                " | Prix : " + prix;
+        return "Seance{" +
+                "numero=" + numero +
+                ", date=" + date +
+                ", heure=" + heure +
+                ", moniteur=" + (moniteur != null ? moniteur.getNom() : "null") +
+                ", prix=" + prix + " DT" +
+                ", condidat=" + (condidat != null ? condidat.getNom() : "null") +
+                '}';
     }
 }

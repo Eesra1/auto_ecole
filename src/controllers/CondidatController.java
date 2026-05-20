@@ -1,8 +1,10 @@
 package controllers;
+
 import UI.CondidatUI;
 import entites.Condidat;
 import repositories.CondidatRepositorie;
-import services.CondidatServive;
+import services.CondidatService;
+
 
 import java.util.Scanner;
 
@@ -21,11 +23,16 @@ public class CondidatController {
             System.out.println("3 - Supprimer un candidat");
             System.out.println("4 - Chercher un candidat par CIN");
             System.out.println("5 - Afficher tous les candidats");
+            System.out.println("6 - Enregistrer un paiement d'un candidat"); // nouvelle option
             System.out.println("0 - Quitter");
             System.out.print("Votre choix : ");
 
-            choix = sc.nextInt();
-            sc.nextLine(); // vider buffer
+            try {
+                choix = Integer.parseInt(sc.nextLine().trim());
+            } catch (Exception e) {
+                System.out.println("Entrée invalide !");
+                continue;
+            }
 
             switch (choix) {
 
@@ -33,44 +40,66 @@ public class CondidatController {
                     System.out.println("\n--- Création d'un candidat ---");
                     Condidat c = CondidatUI.creerCondidat();
                     if (c != null) {
-                        CondidatServive.ajouterCondidat(c);
+                        CondidatService.ajouterCondidat(c);
                     }
                     break;
 
                 case 2:
                     System.out.println("\n--- Modifier un candidat ---");
-                    System.out.print("Entrer le CIN du candidat : ");
-                    int cinModif = sc.nextInt();
-                    sc.nextLine();
+                    try {
+                        System.out.print("Entrer le CIN du candidat : ");
+                        int cinModif = Integer.parseInt(sc.nextLine().trim());
 
-                    System.out.print("Nouveau mail : ");
-                    String mail = sc.nextLine();
+                        System.out.print("Nouveau mail : ");
+                        String mail = sc.nextLine().trim();
 
-                    System.out.print("Nouvel âge : ");
-                    int age = sc.nextInt();
+                        System.out.print("Nouvel âge : ");
+                        int age = Integer.parseInt(sc.nextLine().trim());
 
-                    CondidatServive.modifierCondidat(cinModif, mail, age);
+                        CondidatService.modifierCondidat(cinModif, mail, age);
+                    } catch (NumberFormatException nfe) {
+                        System.out.println("Format numérique invalide !");
+                    }
                     break;
 
                 case 3:
                     System.out.println("\n--- Suppression d'un candidat ---");
-                    System.out.print("Entrer le CIN à supprimer : ");
-                    int cinSup = sc.nextInt();
-
-                    CondidatServive.supprimerCondidat(cinSup);
+                    try {
+                        System.out.print("Entrer le CIN à supprimer : ");
+                        int cinSup = Integer.parseInt(sc.nextLine().trim());
+                        CondidatService.supprimerCondidat(cinSup);
+                    } catch (NumberFormatException nfe) {
+                        System.out.println("Format numérique invalide !");
+                    }
                     break;
 
                 case 4:
                     System.out.println("\n--- Recherche d'un candidat ---");
-                    System.out.print("Entrer le CIN : ");
-                    int cinCherch = sc.nextInt();
-
-                    CondidatServive.afficherCondidatParCin(cinCherch);
+                    try {
+                        System.out.print("Entrer le CIN : ");
+                        int cinCherch = Integer.parseInt(sc.nextLine().trim());
+                        CondidatService.afficherCondidatParCin(cinCherch);
+                    } catch (NumberFormatException nfe) {
+                        System.out.println("Format numérique invalide !");
+                    }
                     break;
 
                 case 5:
                     System.out.println("\n--- Liste des candidats ---");
-                    CondidatServive.afficherTous();
+                    CondidatService.afficherTous();
+                    break;
+
+                case 6:
+                    System.out.println("\n--- Enregistrer un paiement ---");
+                    try {
+                        System.out.print("Entrer le CIN du candidat : ");
+                        int cinPaiement = Integer.parseInt(sc.nextLine().trim());
+                        System.out.print("Entrer le montant payé (DT) : ");
+                        float montant = Float.parseFloat(sc.nextLine().trim());
+                        CondidatService.payerCondidat(cinPaiement, montant);
+                    } catch (NumberFormatException nfe) {
+                        System.out.println("Format numérique invalide !");
+                    }
                     break;
 
                 case 0:
@@ -78,10 +107,8 @@ public class CondidatController {
                     break;
 
                 default:
-                    System.out.println("❌ Choix invalide !");
+                    System.out.println("Choix invalide !");
             }
         }
     }
-
-
 }

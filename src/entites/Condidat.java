@@ -1,15 +1,30 @@
 package entites;
+
 import Exeption.CondidatExption;
-public class Condidat  extends Person{
-    private int nbSC,age ;
 
-    private float montantPaye,montantApaye;
+/**
+ * Représentation d'un candidat.
+ * Maintenant avec le champ Permis et montantApaye initialisé par défaut à 50 DT (si constructeur simple utilisé).
+ */
+public class Condidat extends Person {
+    private int nbSC;
+    private int age;
+    private float montantPaye;
+    private float montantApaye;
+    private Permis permis;
 
-    public Condidat(String nom,int numero, int cin, String mail,int age,  int nbSSc,  float montantPaye, float montantApaye) throws CondidatExption {
+    /**
+     * Constructeur principal : tous les champs.
+     * montantApaye doit être fourni quand on veut rétablir depuis la persistence.
+     */
+    public Condidat(String nom, int numero, int cin, String mail, int age,
+                    int nbSSc, float montantPaye, float montantApaye, Permis permis) throws CondidatExption {
         super(nom, numero, cin, mail);
-        if (age<18){
+
+        if (age < 18) {
             throw new CondidatExption("Âge invalide : le candidat doit avoir au moins 18 ans !");
         }
+
         // ----- Vérification numéro (8 chiffres) -----
         if (String.valueOf(numero).length() != 8) {
             throw new CondidatExption("Numéro invalide : il doit contenir exactement 8 chiffres !");
@@ -25,16 +40,21 @@ public class Condidat  extends Person{
             throw new CondidatExption("Email invalide : il doit se terminer par @gmail.com !");
         }
 
-        this.age=age;
+        this.age = age;
         this.nbSC = nbSSc;
         this.montantPaye = montantPaye;
         this.montantApaye = montantApaye;
-
-    }
-    public Condidat(String nom, int numero, int cin, String mail ,int age ) throws CondidatExption {
-        this(nom, numero, cin, mail, age, 0, 0f, 0f); // appelle le constructeur principal avec des 0
+        this.permis = permis;
     }
 
+    /**
+     * Constructeur simplifié utilisé à la création : initialise montantPaye = 0 et montantApaye = 50 (acompte initial).
+     */
+    public Condidat(String nom, int numero, int cin, String mail, int age, Permis permis) throws CondidatExption {
+        this(nom, numero, cin, mail, age, 0, 0f, 50f, permis);
+    }
+
+    // Getters / setters
     public int getNbSC() {
         return nbSC;
     }
@@ -65,5 +85,13 @@ public class Condidat  extends Person{
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public Permis getPermis() {
+        return permis;
+    }
+
+    public void setPermis(Permis permis) {
+        this.permis = permis;
     }
 }

@@ -78,7 +78,7 @@ public class MoniteurController {
                     break;
 
                 default:
-                    System.out.println("❌ Choix invalide !");
+                    System.out.println(" Choix invalide !");
             }
         }
     }
