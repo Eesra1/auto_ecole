@@ -1,27 +1,19 @@
 package UI;
 
 import entites.Moniteur;
-import entites.Condidat;
 import Exeption.MoniteurException;
+import repositories.CondidatRepositorie;
 
-import java.util.ArrayList;
 import java.util.Scanner;
+
 
 public class MoniteurUI {
 
-    // Liste des candidats (à connecter avec ta vraie liste)
-    public static ArrayList<Condidat> listeCondidats = new ArrayList<>();
-
     static Scanner sc = new Scanner(System.in);
 
-    // Méthode pour vérifier si un CIN existe déjà chez les candidats
-    public static boolean cinExiste(int cin) {
-        for (Condidat c : listeCondidats) {
-            if (c.getCin() == cin) {
-                return true;
-            }
-        }
-        return false;
+    // Méthode pour vérifier si un CIN existe déjà chez les candidats (via repository)
+    public static boolean cinExisteChezCondidats(int cin) {
+        return CondidatRepositorie.chercherParCin(cin) != null;
     }
 
     // Méthode finale de création du moniteur
@@ -40,8 +32,8 @@ public class MoniteurUI {
             int cin = sc.nextInt();
             sc.nextLine(); // vider buffer
 
-            // Vérification unicité CIN
-            if (cinExiste(cin)) {
+            // Vérification unicité CIN chez les candidats
+            if (cinExisteChezCondidats(cin)) {
                 System.out.println("❌ Erreur : ce CIN existe déjà chez un candidat !");
                 System.out.println("Création du moniteur annulée.");
                 return null;

@@ -9,11 +9,12 @@ import java.io.IOException;
 
 import entites.Moniteur;
 
+
 public class MoniteurRepositorie {
 
     private static final String FILE_PATH = "moniteurs.json";
 
-    /** Charger le fichier JSON */
+
     private static JSONArray loadArray() {
         try (FileReader reader = new FileReader(FILE_PATH)) {
 
@@ -42,8 +43,13 @@ public class MoniteurRepositorie {
     }
 
 
-    /** Ajouter un moniteur */
+
     public static boolean addMoniteur(Moniteur m) {
+
+        // Vérifier si le CIN existe déjà chez un candidat (empêche conflit entre types)
+        if (CondidatRepositorie.chercherParCin(m.getCin()) != null) {
+            return false;
+        }
 
         JSONArray arr = loadArray();
 
@@ -129,6 +135,11 @@ public class MoniteurRepositorie {
             saveArray(arr);
         }
 
+        return retrouveSafe(trouve);
+    }
+
+    // small helper to avoid accidental refactor issues
+    private static boolean retrouveSafe(boolean trouve) {
         return trouve;
     }
 

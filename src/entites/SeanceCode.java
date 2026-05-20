@@ -5,8 +5,12 @@ import java.time.LocalTime;
 
 public class SeanceCode extends Seance {
 
-    public SeanceCode(int numero, LocalDate date, LocalTime heure, Moniteur moniteur, float prix, Condidat condidat) {
-        super(numero, date, heure, moniteur, prix, condidat);
+    private static final float PRIX_FIXE = 15.0f;
+
+    public SeanceCode(int numero, LocalDate date, LocalTime heure, Moniteur moniteur, Condidat condidat) {
+        super(numero, date, heure, moniteur, condidat);
+        // prix fixé à 15 DT pour la séance de code
+        setPrix(PRIX_FIXE);
     }
 
     @Override
