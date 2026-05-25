@@ -1,0 +1,30 @@
+[
+    {
+        "date": "2025-12-20",
+        "moniteur_cin": 12459876,
+        "heure": "10:00",
+        "numero": 1,
+        "prix": 15,
+        "type": "code",
+        "condidat_cin": 13654546
+    },
+    {
+        "date": "2025-12-16",
+        "moniteur_cin": 12459876,
+        "heure": "11:00",
+        "numero": 2,
+        "prix": 15,
+        "type": "code",
+        "condidat_cin": 15259180
+    },
+    {
+        "date": "2025-12-16",
+        "moniteur_cin": 13254684,
+        "heure": "11:00",
+        "numero": 3,
+        "prix": 25,
+        "vehicule_immatriculation": "2525nt123",
+        "type": "conduite",
+        "condidat_cin": 13654546
+    }
+]

@@ -1,0 +1,47 @@
+[
+    {
+        "nombrePlaces": 5,
+        "kmProchainEntretien": 10000,
+        "kilometrageTotal": 80255,
+        "type": "Voiture",
+        "carburant": "dysel",
+        "dateVisiteTechnique": "2026-11-30",
+        "marque": "golf",
+        "dateVignette": "2026-11-30",
+        "enService": true,
+        "modele": "8",
+        "dateMiseService": "2024-08-29",
+        "dateAssurance": "2026-11-30",
+        "immatriculation": "2525nt123"
+    },
+    {
+        "nombrePlaces": 7,
+        "kmProchainEntretien": 10000,
+        "kilometrageTotal": 0,
+        "type": "Voiture",
+        "carburant": "Diesel",
+        "dateVisiteTechnique": "2026-12-02",
+        "marque": "FORD TERRITORY",
+        "dateVignette": "2026-12-02",
+        "enService": true,
+        "modele": "L EcoBoost Titqnuiun",
+        "dateMiseService": "2025-01-03",
+        "dateAssurance": "2026-12-02",
+        "immatriculation": "6214nt654"
+    },
+    {
+        "nombrePlaces": 4,
+        "kmProchainEntretien": 10000,
+        "kilometrageTotal": 120000,
+        "type": "Voiture",
+        "carburant": "ESSENCE",
+        "dateVisiteTechnique": "2026-12-02",
+        "marque": "TOYOTA",
+        "dateVignette": "2026-12-02",
+        "enService": true,
+        "modele": "GAC EMKOO",
+        "dateMiseService": "2023-08-27",
+        "dateAssurance": "2026-12-02",
+        "immatriculation": "4465nt789"
+    }
+]

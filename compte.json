@@ -1,0 +1,21 @@
+[
+    {
+        "data": {
+            "2025-12": -10,
+            "2025-04": 80
+        },
+        "type": "revenus"
+    },
+    {
+        "data": {},
+        "type": "depenses"
+    },
+    {
+        "data": {},
+        "type": "detailsRevenus"
+    },
+    {
+        "data": {"2025-04": {"Assurance": 25}},
+        "type": "detailsDepenses"
+    }
+]
